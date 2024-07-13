@@ -32,6 +32,7 @@ public class SecurityConfigurations {
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .requestMatchers("/api/categories/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/payment-services/**").hasAuthority("ADMIN")
+                        .requestMatchers("/api/bills/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

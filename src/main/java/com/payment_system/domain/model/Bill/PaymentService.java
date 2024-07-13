@@ -20,7 +20,6 @@ public class PaymentService {
     private String paymentServiceName;
 
     private String description;
-
  
     public String getPaymentServiceName() {
         return paymentServiceName;
