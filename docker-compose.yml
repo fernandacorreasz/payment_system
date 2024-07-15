@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: admin123**
+      POSTGRES_DB: payment_system
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  postgres_test:
+    image: postgres:12-alpine
+    container_name: postgres_test_container
+    environment:
+      POSTGRES_USER: test_admin
+      POSTGRES_PASSWORD: test123**
+      POSTGRES_DB: payment_system_test
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: payment_system_app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_container:5432/payment_system
+      SPRING_DATASOURCE_USERNAME: user_admin
+      SPRING_DATASOURCE_PASSWORD: admin123**
+      SPRING_DATASOURCE_URL_TEST: jdbc:postgresql://postgres_test_container:5432/payment_system_test
+      SPRING_DATASOURCE_USERNAME_TEST: test_admin
+      SPRING_DATASOURCE_PASSWORD_TEST: test123**
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - postgres_test
+
+volumes:
+  postgres_data:
+  postgres_test_data:

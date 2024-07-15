@@ -3,7 +3,6 @@ package com.payment_system.application.service;
 import com.payment_system.application.exception.ResourceNotFoundException;
 import com.payment_system.domain.model.Bill.Bill;
 import com.payment_system.domain.model.Bill.dto.BillDTO;
-import com.payment_system.domain.model.Bill.dto.BillStatusDTO;
 import com.payment_system.domain.repository.BillRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
