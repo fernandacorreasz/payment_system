@@ -1,7 +1,5 @@
 # Payment System
 
-# Payment System
-
 Este projeto é um sistema de pagamento desenvolvido em Java utilizando Spring Boot. A aplicação, o banco de dados e outros serviços necessários estão orquestrados utilizando Docker Compose.
 
 ### Tecnologias Utilizadas:
