@@ -3,6 +3,17 @@
 Este projeto é um sistema de pagamento desenvolvido em Java utilizando Spring Boot. A aplicação, o banco de dados e outros serviços necessários estão orquestrados utilizando Docker Compose.
 
 ---
+## Demonstração em Vídeo
+
+### Configuração da Aplicação na Máquina
+
+[Assista ao vídeo no YouTube](https://youtu.be/aMZF3JlWxAE)
+
+### Testes das APIs no Swagger
+
+[Assista ao vídeo no YouTube](https://youtu.be/_S9UUaSnjOI)
+
+---
 
 ## Instruções para Construir e Rodar a Aplicação
 
@@ -75,23 +86,4 @@ Este projeto é um sistema de pagamento desenvolvido em Java utilizando Spring B
 7. Para mais detalhes sobre o projeto e documentação completa, consulte o link abaixo:
     [Documentação Payment System](https://paint-mailbox-381.notion.site/Documenta-o-payment-system-89386274425647fab3edb224760cc2e6)
 
----
-
-## Demonstração em Vídeo
-
-### Configuração da Aplicação na Máquina
-
-<div align="center">
-  <a href="https://youtu.be/aMZF3JlWxAE" target="_blank">
-    <img src="https://img.youtube.com/vi/aMZF3JlWxAE/0.jpg" alt="Vídeo de Demonstração" style="width:100%; max-width:600px; height:auto;">
-  </a>
-</div>
-
-### Testes das APIs no Swagger
-
-<div align="center">
-  <a href="https://youtu.be/_S9UUaSnjOI" target="_blank">
-    <img src="https://img.youtube.com/vi/aMZF3JlWxAE/0.jpg" alt="Vídeo de Demonstração" style="width:100%; max-width:600px; height:auto;">
-  </a>
-</div>
 
