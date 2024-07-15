@@ -13,9 +13,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
-
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class BillController {
 
     @Autowired
     private BillService billService;
-    
+
     @PostMapping("register")
     public ResponseEntity<Object> createBill(@RequestBody Bill bill) {
         try {
@@ -36,18 +37,31 @@ public class BillController {
         }
     }
 
+    @PostMapping(value = "import", consumes = "multipart/form-data")
+    public ResponseEntity<Object> importBills(@RequestParam("file") MultipartFile file) {
+        try {
+            List<Map<String, Object>> importedBills = billService.importBills(file);
+            return ResponseEntity.ok(Map.of("importedBills", importedBills));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<Bill> getBill(@PathVariable UUID id) {
-        return billService.getBillById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        try {
+            Bill bill = billService.getBillById(id);
+            return ResponseEntity.ok(bill);
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
+    
 
     @GetMapping("list")
     public ResponseEntity<Page<BillDTO>> getBills(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
+            @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<BillDTO> bills = billService.getBills(pageable);
         return ResponseEntity.ok(bills);
@@ -58,8 +72,7 @@ public class BillController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dueDate,
             @RequestParam(required = false) String description,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
+            @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<BillDTO> bills = billService.getBillsWithFilters(dueDate, description, pageable);
         return ResponseEntity.ok(bills);
@@ -107,4 +120,3 @@ public class BillController {
     }
 
 }
- 
