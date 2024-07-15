@@ -1,6 +1,27 @@
 # Payment System
 
+# Payment System
+
 Este projeto é um sistema de pagamento desenvolvido em Java utilizando Spring Boot. A aplicação, o banco de dados e outros serviços necessários estão orquestrados utilizando Docker Compose.
+
+### Tecnologias Utilizadas:
+
+- **Java**
+- **Spring Boot**
+- **Docker**
+- **Docker Compose**
+- **PostgreSQL**
+- **Flyway**
+- **Spring Security e JWT**
+- **Swagger**
+
+### Sobre o Projeto:
+Este projeto consiste em uma aplicação de pagamento que permite o registro de usuários, autenticação, gerenciamento de contas a pagar e recebimento de pagamentos. A aplicação está configurada para utilizar Spring Security com JWT para proteger os endpoints e controlar o acesso baseado em permissões.
+
+- **Autenticação e Autorização**: O projeto utiliza Spring Security e JWT para autenticação e autorização. Usuários podem se registrar e fazer login para receber um token JWT, que deve ser usado para acessar endpoints protegidos.
+- **Migrações de Banco de Dados**: Utilizamos Flyway para gerenciar as migrações de banco de dados.
+- **Documentação da API**: A documentação da API é gerada automaticamente utilizando Swagger para visualizar e testar os endpoints da API diretamente no navegador.
+- **Testes**: Os testes unitários foram implementados utilizando JUnit e Mockito.
 
 ---
 ## Demonstração em Vídeo
